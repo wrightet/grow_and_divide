@@ -1,12 +1,13 @@
 
-const MovingObject = require('./moving_object');
+const Game = require("./game");
+const GameView = require("./game_view");
 
 document.addEventListener("DOMContentLoaded", () => {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.moveTo(0,0);
-    ctx.lineTo(200,100);
-    ctx.stroke() ;   
-    console.log("webpack is working")
-    window.MovingObject = MovingObject;
-})
+    const canvasEl = document.getElementsByTagName("canvas")[0];
+    canvasEl.width = Game.DIM_X;
+    canvasEl.height = Game.DIM_Y;
+
+    const ctx = canvasEl.getContext("2d");
+    const game = new Game();
+    new GameView(game, ctx).start();
+});
