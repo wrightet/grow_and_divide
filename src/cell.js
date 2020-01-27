@@ -1,37 +1,39 @@
-const Cell = function(centerX, centerY, color) {
-    this.centerX = centerX;
-    this.centerY = centerY;
-    this.radius = 5;
-    this.color = color;
-}
+const MovingObject = require("./moving_object");
 
-const HEX_DIGITS = "0123456789ABCDEF";
 
-Cell.prototype.randomColor = function () {
+
+
+const randomColor = function () {
+    const hexDigits = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
-        color += HEX_DIGITS[Math.floor((Math.random() * 16))];
+        color += hexDigits[Math.floor((Math.random() * 16))];
     }
 
     return color;
 }
 
-Cell.prototype.grow = function(ctx) {
-    this.radius += 1;
+class Cell extends MovingObject {
+    constructor(options){
+        super(options);
+        options.radius = Cell.Radius;
+        options.vel = options.vel || [0,0];
+        options.color = randomColor();
+    }
+
+    grow(ctx) {
+     this.radius += 1;
+    }
+
+    fireMass(){
+        // 
+    }
+
+    divide(){
+        //
+    }
 }
 
-Cell.prototype.render = function (ctx) {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
+Cell.RADIUS = 10;
 
-    ctx.arc(
-        this.centerX,
-        this.centerY,
-        this.radius,
-        0,
-        2 * Math.PI,
-        false
-    );
-
-    ctx.fill();
-}
+module.exports = Cell;
