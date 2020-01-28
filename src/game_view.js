@@ -1,10 +1,11 @@
-import { SplitChunksPlugin } from "webpack";
+
 
 class GameView {
     constructor(game, ctx){
         this.ctx = ctx;
         this.game = game;
         this.cell = this.game.addCell();
+        
     }
 
     bindKeyHandlers(){
@@ -12,11 +13,11 @@ class GameView {
 
         Object.keys(GameView.MOVES).forEach((k) => {
             const move = GameView.MOVES[k];
-            key(k, () => {ship.power(move); });
+            key(k, () => {cell.power(move); });
         });
-
-        // key("w", () => { cell.fireMass();});
-        // key("space", () => {cell.divide();});
+        
+        key("w", () => { cell.fireMass();});
+        key("space", () => {cell.divide();});
     }
 
     start() {

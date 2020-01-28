@@ -6,11 +6,12 @@ class Game {
     constructor(){
         this.food = [];
         this.cells = [];
-
         this.addFood();
+   
     }
 
     add(object){
+        
         if (object instanceof Food){
             this.food.push(object);
         } else if (object instanceof Cell){
@@ -21,28 +22,33 @@ class Game {
     }
 
     addFood(){
-        for (let i = 0; i < Game.num; i++){
-            this.add(new Food({game: this}));
+        
+        for (let i = 0; i < Game.NUM_FOOD; i++){
+            this.add(new Food({game: this, pos: this.randomPosition()}));
         }
     }
 
     addCell(){
+      
         const cell = new Cell({
-            pos:this.randomPostion(),
+            pos: this.randomPosition(),
             game: this
         });
+        this.add(cell);
+        return cell;
     }
 
     allObjects(){
         return [].concat(this.cells, this.food);
     }
 
-    checkCollisons(){
+    checkCollisions(){
+        
         const allObjects = this.allObjects();
         for (let i = 0; i < allObjects.length; i++){
             for (let j = 0; j < allObjects.length; j++){
-                const obj1 = allObject[i];
-                const obj2 = allObject[j];
+                const obj1 = allObjects[i];
+                const obj2 = allObjects[j];
 
                 if (obj1.collidedWith(obj2)){
                     const collison = obj1.collideWith(obj2);
@@ -53,6 +59,7 @@ class Game {
     }
 
     draw(ctx) {
+        
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
         ctx.fillStyle = Game.BG_COLOR;
         ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
@@ -94,7 +101,7 @@ class Game {
 
     step(delta) {
         this.moveObjects(delta);
-        this.checkCollisions();
+        // this.checkCollisions();
     }
 
     wrap(pos) {
