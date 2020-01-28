@@ -22,9 +22,10 @@ class Food extends MovingObject{
     }
 
     collideWith(otherObject) {
-        if (otherObject instanceof Cell) {
+      
+            this.remove();
             return true;
-        }
+       
    
     }
 }

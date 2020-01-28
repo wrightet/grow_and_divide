@@ -1,11 +1,13 @@
 const Cell = require("./cell");
 const Food = require("./food");
+const Mass = require("./mass");
 const Util = require("./util");
 
 class Game {
     constructor(){
         this.food = [];
         this.cells = [];
+        this.masses = [];
         this.addFood();
    
     }
@@ -16,7 +18,8 @@ class Game {
             this.food.push(object);
         } else if (object instanceof Cell){
             this.cells.push(object)
-        } else {
+        } else if (object instanceof Mass){this.masses.push(object)}
+        else {
             throw new Error("unknown type of object");
         }
     }
@@ -43,14 +46,15 @@ class Game {
     }
 
     checkCollisions(){
-        
+        // debugger
         const allObjects = this.allObjects();
         for (let i = 0; i < allObjects.length; i++){
             for (let j = 0; j < allObjects.length; j++){
                 const obj1 = allObjects[i];
                 const obj2 = allObjects[j];
 
-                if (obj1.collidedWith(obj2)){
+                if (obj1.isCollidedWith(obj2)){
+                
                     const collison = obj1.collideWith(obj2);
                     if( collison) return;
                 }
@@ -101,7 +105,7 @@ class Game {
 
     step(delta) {
         this.moveObjects(delta);
-        // this.checkCollisions();
+        this.checkCollisions();
     }
 
     wrap(pos) {
