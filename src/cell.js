@@ -1,6 +1,7 @@
 const MovingObject = require("./moving_object");
 
-
+const Mass = require("./mass");
+const Util = require("./util");
 
 
 const randomColor = function () {
@@ -25,8 +26,30 @@ class Cell extends MovingObject {
      this.radius += 1;
     }
 
+    shrink(ctx){
+        this.radius -= ctx
+    }
+
     fireMass(){
-        // 
+        const norm = Util.norm(this.vel);
+
+        const relVel = Util.scale(
+            Util.dir(this.vel),
+            Mass.SPEED
+        );
+
+        const massVel = [
+            relVel[0] + this. vel[0], relVel[1] + this.vel[1]
+        ];
+
+        const mass = new Mass ({
+            pos: this.pos,
+            vel: massVel,
+            color: this. color,
+            game: this.game
+        });
+
+        this.game.add(mass);
     }
 
     divide(){

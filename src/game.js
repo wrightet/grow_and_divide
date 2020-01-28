@@ -81,12 +81,12 @@ class Game {
     }
 
     remove(object) {
-        if (object instanceof Bullet) {
-            this.bullets.splice(this.bullets.indexOf(object), 1);
-        } else if (object instanceof Asteroid) {
-            this.asteroids.splice(this.asteroids.indexOf(object), 1);
-        } else if (object instanceof Ship) {
-            this.ships.splice(this.ships.indexOf(object), 1);
+        if (object instanceof Mass) {
+            this.masses.splice(this.masses.indexOf(object), 1);
+        } else if (object instanceof Food) {
+            this.food.splice(this.food.indexOf(object), 1);
+        } else if (object instanceof Cell) {
+            this.cells.splice(this.cells.indexOf(object), 1);
         } else {
             throw new Error("unknown type of object");
         }
