@@ -1,7 +1,7 @@
 const MovingObject = require("./moving_object");
 const Mass = require("./mass");
 const Util = require("./util");
-
+const Food = require("./food");
 
 const randomColor = function () {
     const hexDigits = "0123456789ABCDEF";
@@ -22,8 +22,19 @@ class Cell extends MovingObject {
         
     }
 
+    collidedWith(object){
+        if(object instanceof Food){
+            this.grow(1);
+            // object.relocate();
+        } else if (object instanceof Mass) {
+            this.grow(10);
+            object.remove();
+        } else if (object  instanceof Cell && this.radius > object.radius) {
+            this.grow(object.radius);
+        }
+    }
     grow(ctx) {
-     this.radius += 1;
+     this.radius += ctx;
     }
 
     shrink(ctx){

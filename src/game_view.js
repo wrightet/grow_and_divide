@@ -16,8 +16,8 @@ class GameView {
             key(k, () => {cell.power(move); });
         });
         
-        key("w", () => { cell.fireMass();});
-        key("space", () => {cell.divide();});
+        // key("w", () => { cell.fireMass();});
+        // key("space", () => {cell.divide();});
     }
 
     start() {

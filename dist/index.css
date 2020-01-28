@@ -1,10 +1,32 @@
 canvas {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     
 }
 h1 {
     display: flex;
     justify-content: center;
+}
+
+#links > ul {
+    list-style: none;
+}
+#links{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#controls {
+    border: 1px solid black;
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+}
+#controls > ul {
+    list-style: none;
+}
+
+#controls > ul > li {
+    padding: 5px;
 }

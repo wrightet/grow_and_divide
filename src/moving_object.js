@@ -1,3 +1,4 @@
+const Util = require('./util')
 
 class MovingObject {
     constructor(options){
@@ -24,6 +25,7 @@ class MovingObject {
     }
 
     isCollidedWith(otherObject) {
+        debugger
         const centerDist = Util.dist(this.pos, otherObject.pos);
         return centerDist < (this.radius + otherObject.radius);
     }
