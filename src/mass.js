@@ -1,6 +1,6 @@
 const MovingObject = require('./moving_object');
 const Cell = require('./cell');
-
+const Food = require('./food');
 
 class Mass extends MovingObject {
     constructor(options) {
@@ -14,8 +14,11 @@ class Mass extends MovingObject {
         if (otherObject instanceof Cell) {
             return true;
         }
+        if (otherObject instanceof Food){
+            return true;
+        }
 
     }
 }
 
-module.exports = Food;
+module.exports = Mass;

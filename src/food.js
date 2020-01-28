@@ -18,6 +18,7 @@ class Food extends MovingObject{
         options.vel = [0, 0];
         options.color = randomColor();
         super(options);
+       
     }
 
     collideWith(otherObject) {

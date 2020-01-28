@@ -1,5 +1,4 @@
 const MovingObject = require("./moving_object");
-
 const Mass = require("./mass");
 const Util = require("./util");
 
@@ -16,10 +15,11 @@ const randomColor = function () {
 
 class Cell extends MovingObject {
     constructor(options){
-        super(options);
-        options.radius = Cell.Radius;
+        options.radius = 10;
         options.vel = options.vel || [0,0];
         options.color = randomColor();
+        super(options);
+        
     }
 
     grow(ctx) {
@@ -54,6 +54,17 @@ class Cell extends MovingObject {
 
     divide(){
         //
+    }
+
+    power(impulse){
+        this.vel[0] += impulse[0];
+        this.vel[1] += impulse[1]
+    }
+
+
+    relocate() {
+        this.pos = this.game.randomPosition();
+        this.vel = [0, 0];
     }
 }
 
