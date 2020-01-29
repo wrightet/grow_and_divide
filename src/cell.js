@@ -25,15 +25,14 @@ class Cell extends MovingObject {
     }
     collideWith(otherObject) {
         if (otherObject instanceof Food) {
-            // otherObject.relocate();
-            otherObject.remove();
+            otherObject.relocate();
             this.grow(.1)
             return true;
         } else if (otherObject instanceof Mass) {
-            this.grow(10);
+            this.grow(1);
             otherObject.remove();
         } else if (otherObject instanceof Cell && this.radius > otherObject.radius) {
-            this.grow(otherObject.radius);
+            this.grow(otherObject.radius/10);
         }
         return false
     }
