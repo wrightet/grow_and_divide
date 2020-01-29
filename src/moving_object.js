@@ -24,17 +24,9 @@ class MovingObject {
         ctx.fill();
     }
 
-    isCollidedWith(otherObject) {
-        // debugger
+    isCollidedWith(otherObject){
         const centerDist = Util.dist(this.pos, otherObject.pos);
-        // console.log(centerDist)
-        // console.log(this.pos)
-        // console.log(otherObject.pos)
-        // console.log(this.radius)
-        // console.log(otherObject.radius)
-        // console.log(centerDist < (this.radius + otherObject.radius))
         return centerDist < (this.radius + otherObject.radius);
-        
     }
 
     move(timeDelta) {
