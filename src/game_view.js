@@ -18,7 +18,7 @@ class GameView {
         // debugger
         key("e", () => { cell.fireMass();});
         key("g", () => {cell.grow(10);}); //testing purposes only
-        // key("space", () => {cell.divide();});
+        key("space", () => {cell.divide();});
     }
 
     start() {
