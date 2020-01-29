@@ -46,8 +46,10 @@ class Cell extends MovingObject {
     }
 
     fireMass(){
+        if (this.radius >= 14){
+        
         const norm = Util.norm(this.vel);
-
+            // if( norm){return}
         const relVel = Util.scale(
             Util.dir(this.vel),
             Mass.SPEED
@@ -59,12 +61,15 @@ class Cell extends MovingObject {
 
         const mass = new Mass ({
             pos: this.pos,
+            // pos: [(this.pos[0] + this.radius), (this.pos[1]+ this.radius)]
             vel: massVel,
             color: this. color,
             game: this.game
         });
-
+        this.shrink(mass.radius);
         this.game.add(mass);
+        }
+        
     }
 
     divide(){

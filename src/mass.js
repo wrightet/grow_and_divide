@@ -4,21 +4,22 @@ const Food = require('./food');
 
 class Mass extends MovingObject {
     constructor(options) {
-        options.radius = 5;
-        options.vel = [0, 0];
+        options.radius = 10;
+        // options.vel = [0, 0];
         options.color = Cell.color;
         super(options);
     }
 
-    collideWith(otherObject) {
-        if (otherObject instanceof Cell) {
-            return true;
-        }
-        if (otherObject instanceof Food){
-            return true;
-        }
+    // collideWith(otherObject) {
+    //     if (otherObject instanceof Cell) {
+    //         return true;
+    //     }
+    //     if (otherObject instanceof Food){
+    //         return true;
+    //     }
 
-    }
+    // }
+   
 }
-
+ Mass.SPEED = 8;
 module.exports = Mass;

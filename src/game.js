@@ -41,8 +41,19 @@ class Game {
         return cell;
     }
 
+    // addMass(){
+
+    //     const mass = new Mass({
+    //         pos: this.cells[0].pos,
+    //         game: this
+    //     })
+        
+    //     this.add(mass)
+    //     return mass
+    // }
+
     allObjects(){
-        return [].concat(this.cells, this.food);
+        return [].concat(this.cells, this.food, this.masses);
     }
 
     checkCollisions(){
