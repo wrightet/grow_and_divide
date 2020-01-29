@@ -15,8 +15,8 @@ class GameView {
             const move = GameView.MOVES[k];
             key(k, () => {cell.power(move); });
         });
-        
-        // key("w", () => { cell.fireMass();});
+        // debugger
+        key("e", () => { cell.fireMass();});
         // key("space", () => {cell.divide();});
     }
 
