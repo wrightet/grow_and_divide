@@ -13,6 +13,8 @@ const randomColor = function () {
     return color;
 }
 
+
+
 class Cell extends MovingObject {
     constructor(options){
         options.radius = 10;
@@ -21,18 +23,21 @@ class Cell extends MovingObject {
         super(options);
         
     }
-
-    collidedWith(object){
-        if(object instanceof Food){
-            this.grow(1);
-            // object.relocate();
-        } else if (object instanceof Mass) {
+    collideWith(otherObject) {
+        if (otherObject instanceof Food) {
+            // otherObject.relocate();
+            otherObject.remove();
+            this.grow(.1)
+            return true;
+        } else if (otherObject instanceof Mass) {
             this.grow(10);
-            object.remove();
-        } else if (object  instanceof Cell && this.radius > object.radius) {
-            this.grow(object.radius);
+            otherObject.remove();
+        } else if (otherObject instanceof Cell && this.radius > otherObject.radius) {
+            this.grow(otherObject.radius);
         }
+        return false
     }
+
     grow(ctx) {
      this.radius += ctx;
     }
@@ -73,12 +78,15 @@ class Cell extends MovingObject {
     }
 
 
-    relocate() {
+    relocate(){
         this.pos = this.game.randomPosition();
         this.vel = [0, 0];
     }
 }
 
+
+
 Cell.RADIUS = 10;
 
 module.exports = Cell;
+

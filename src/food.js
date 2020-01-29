@@ -13,7 +13,7 @@ function randomColor() {
 }
 
 class Food extends MovingObject{
-    constructor(options){
+    constructor(options ={}){
         options.radius = 1;
         options.vel = [0, 0];
         options.color = randomColor();
@@ -21,13 +21,24 @@ class Food extends MovingObject{
        
     }
 
-    collideWith(otherObject) {
-      
-            this.remove();
-            return true;
+    // collideWith(otherObject) {
+    //     if(otherObject instanceof Cell) {
+    //          this.remove();  
+    //         return true;
+    //     }
+    //     return false
        
-   
-    }
+        
+    //     // if(!otherObject instanceof Food && this instanceof Food) {
+    //     //      this.remove();  
+    //     //      console.log(this)
+    //     //      console.log(otherObject)
+    //     //     return true;
+    //     // }
+        
+    //         //  this.remove();  
+    //         // return true;
+    // }
 }
 
 module.exports = Food;
