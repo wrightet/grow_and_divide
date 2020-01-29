@@ -21,24 +21,17 @@ class Food extends MovingObject{
        
     }
 
-    // collideWith(otherObject) {
-    //     if(otherObject instanceof Cell) {
-    //          this.remove();  
-    //         return true;
-    //     }
-    //     return false
-       
-        
-    //     // if(!otherObject instanceof Food && this instanceof Food) {
-    //     //      this.remove();  
-    //     //      console.log(this)
-    //     //      console.log(otherObject)
-    //     //     return true;
-    //     // }
-        
-    //         //  this.remove();  
-    //         // return true;
-    // }
-}
+    collideWith(otherObject) {
+        if(!otherObject instanceof Food) {
+             this.relocate();  
+            return true;
+        }
+        return false
+    }  
+    relocate() {
+        this.pos = this.game.randomPosition();
+        this.vel = [0, 0];
+    }  
 
+}
 module.exports = Food;
