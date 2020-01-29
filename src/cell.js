@@ -30,6 +30,7 @@ class Cell extends MovingObject {
             return true;
         } else if (otherObject instanceof Mass) {
             this.grow(1);
+            console.log("yummy")
             otherObject.remove();
         } else if (otherObject instanceof Cell && this.radius > otherObject.radius) {
             this.grow(otherObject.radius/10);
@@ -60,14 +61,15 @@ class Cell extends MovingObject {
         ];
 
         const mass = new Mass ({
-            pos: this.pos,
-            // pos: [(this.pos[0] + this.radius), (this.pos[1]+ this.radius)]
+            // pos: this.pos,
+            pos: [(this.pos[0] + this.radius), (this.pos[1]+ this.radius)],
             vel: massVel,
             color: this. color,
             game: this.game
         });
         this.shrink(mass.radius);
         this.game.add(mass);
+        console.log("blam blam")
         }
         
     }
