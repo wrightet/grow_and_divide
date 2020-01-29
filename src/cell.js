@@ -13,14 +13,19 @@ const randomColor = function () {
     return color;
 }
 
+const randomId = function (){
+    return Math.floor((Math.random()))
+}
 
 
 class Cell extends MovingObject {
     constructor(options){
-        options.radius = 10;
+        options.radius = options.radius ||10;
         options.vel = options.vel || [0,0];
-        options.color = randomColor();
+        options.color = options.color || randomColor();
+        options.id = options.id || randomId();
         super(options);
+        console.log(options.id)
         
     }
     collideWith(otherObject) {
@@ -30,10 +35,13 @@ class Cell extends MovingObject {
             return true;
         } else if (otherObject instanceof Mass) {
             this.grow(5);
-            console.log("yummy")
             otherObject.remove();
-        } else if (otherObject instanceof Cell && this.radius > otherObject.radius) {
-            this.grow(otherObject.radius/10);
+        } else if (otherObject instanceof Cell && this.radius > (otherObject.radius + this.radius / 10)) {
+            console.log(this.radius)
+            console.log(otherObject.radius)
+            this.grow(otherObject.radius);
+            otherObject.remove();
+            console.log(this.radius)
         }
         return false
     }
@@ -75,7 +83,20 @@ class Cell extends MovingObject {
     }
 
     divide(){
-        this.shrink(this.radius/2)
+        if(this.radius > 30){
+            this.shrink(this.radius/2)
+            
+            const cell = new Cell({
+                radius: this.radius,
+                color: this.color,
+                pos: [(this.pos[0] + this.radius + 5), (this.pos[1] + this.radius + 5)],
+                game: this.game
+            })
+            
+            this.game.addCell(cell)
+        }
+        
+        
     
     }
 

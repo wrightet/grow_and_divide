@@ -31,28 +31,26 @@ class Game {
         }
     }
 
-    addCell(){
+    addCell(options){
+        if(options){
+            const cell = new Cell(options)
+            this.add(cell);
+            return cell;
+        } else {
+             const cell = new Cell({
+                pos: this.randomPosition(),
+                game: this,
+                id: this.id
+            });
+            this.add(cell);
+            return cell;
+        }
       
-        const cell = new Cell({
-            pos: this.randomPosition(),
-            game: this
-        });
-        this.add(cell);
-        return cell;
+       
     }
 
-    // addMass(){
-
-    //     const mass = new Mass({
-    //         pos: this.cells[0].pos,
-    //         game: this
-    //     })
-        
-    //     this.add(mass)
-    //     return mass
-    // }
-
     allObjects(){
+        // return [].concat(this.cells, this.masses);
         return [].concat(this.cells, this.food, this.masses);
     }
 

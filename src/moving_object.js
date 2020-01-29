@@ -39,7 +39,7 @@ class MovingObject {
             offsetY = this.vel[1] * velocityScale;
 
         this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
-
+        // console.log(this)
         if (this.game.isOutOfBounds(this.pos)) {
             if (this.isWrappable) {
                 this.pos = this.game.wrap(this.pos);
@@ -50,7 +50,7 @@ class MovingObject {
     }
 
     remove() {
-        this.game.remove(this);
+        this.game.remove(this);  
     }
 }
 
