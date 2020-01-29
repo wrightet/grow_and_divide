@@ -29,7 +29,7 @@ class Cell extends MovingObject {
             this.grow(.1)
             return true;
         } else if (otherObject instanceof Mass) {
-            this.grow(1);
+            this.grow(5);
             console.log("yummy")
             otherObject.remove();
         } else if (otherObject instanceof Cell && this.radius > otherObject.radius) {
@@ -75,7 +75,8 @@ class Cell extends MovingObject {
     }
 
     divide(){
-        //
+        this.shrink(this.radius/2)
+    
     }
 
     power(impulse){
