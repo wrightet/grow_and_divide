@@ -56,7 +56,7 @@ class Game {
                 if (obj1.isCollidedWith(obj2)){
                     // debugger
                     const collison = obj1.collideWith(obj2);
-                    // console.log(collison);
+                    // console.log(collison);sss
                     if( collison) return;
                 }
             }
