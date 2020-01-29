@@ -36,7 +36,7 @@ class Cell extends MovingObject {
         } else if (otherObject instanceof Mass) {
             this.grow(5);
             otherObject.remove();
-        } else if (otherObject instanceof Cell && this.radius > (otherObject.radius + this.radius / 10)) {
+        } else if (otherObject instanceof Cell && this.radius > (otherObject.radius + this.radius / 10) && this.id !== otherObject.id) {
             console.log(this.radius)
             console.log(otherObject.radius)
             this.grow(otherObject.radius);
