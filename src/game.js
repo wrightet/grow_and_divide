@@ -18,7 +18,7 @@ class Game {
         } else if (object instanceof Cell){
             this.cells.push(object)
             console.log(this.cells)
-        } else if (object instanceof Mass){this.masses.push(object)}
+        } else if (object instanceof Mass){this.masses.push(object); console.log(this.masses)}
         else {
             throw new Error("unknown type of object");
         }

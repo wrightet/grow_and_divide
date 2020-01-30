@@ -6,16 +6,16 @@ class GameView {
         this.game = game;
         this.cells = this.game.cells
         this.cell = this.game.addCell();
-        this.enemy= this.game.addCell();
+        // this.enemy= this.game.addCell();
     }
   
 
     bindKeyHandlers(){
-        this.game.cells.forEach(thing => {
-            if (thing.id ===  this.cell.id){
-                this.cells.push(thing);
-            }
-        })
+        // this.game.cells.forEach(thing => {
+        //     if (thing.id ===  this.cell.id){
+        //         this.cells.push(thing);
+        //     }
+        // })
 
         Object.keys(GameView.MOVES).forEach((k) => {
             const move = GameView.MOVES[k];
@@ -25,12 +25,16 @@ class GameView {
                 })
             });
         });
+        // console.log(this.game.cells)
        this.game.cells.forEach(cell => {
             key("e", () => { cell.fireMass();});
             key("g", () => {cell.grow(10);}); //testing purposes only
             key("space", () => {
-                console.log('hi')
-                cell.divide();
+                
+                if(cell.radius > 30){
+                    cell.divide(); 
+                }
+                
             });
        })
        
@@ -62,7 +66,7 @@ GameView.MOVES = {
     w: [0, -1],
     a: [-1, 0],
     s: [0, 1],
-    d: [1, 0],
+    d: [1, 0]
 };
 
 module.exports = GameView;
