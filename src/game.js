@@ -9,7 +9,6 @@ class Game {
         this.cells = [];
         this.masses = [];
         this.addFood();
-   
     }
 
     add(object){
@@ -18,6 +17,7 @@ class Game {
             this.food.push(object);
         } else if (object instanceof Cell){
             this.cells.push(object)
+            console.log(this.cells)
         } else if (object instanceof Mass){this.masses.push(object)}
         else {
             throw new Error("unknown type of object");
@@ -45,17 +45,13 @@ class Game {
             this.add(cell);
             return cell;
         }
-      
-       
     }
 
     allObjects(){
-        // return [].concat(this.cells, this.masses);
         return [].concat(this.cells, this.food, this.masses);
     }
 
     checkCollisions(){
-        // debugger
         const allObjects = this.allObjects();
         for (let i = 0; i < allObjects.length; i++){
             for (let j = 0; j < allObjects.length; j++){
@@ -63,9 +59,7 @@ class Game {
                 const obj2 = allObjects[j];
 
                 if (obj1.isCollidedWith(obj2)){
-                    // debugger
                     const collison = obj1.collideWith(obj2);
-                    // console.log(collison);sss
                     if( collison) return;
                 }
             }
@@ -125,7 +119,12 @@ class Game {
     }
 
 }
-
+Cell.MOVES = {
+    w: [0, -1],
+    a: [-1, 0],
+    s: [0, 1],
+    d: [1, 0],
+};
 Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;

@@ -14,6 +14,7 @@ h1 {
 }
 #links{
     display: flex;
+    display: none;
     justify-content: flex-end;
 }
 
@@ -21,6 +22,7 @@ h1 {
     border: 1px solid black;
     width: 15%;
     display: flex;
+    display: none; 
     justify-content: flex-start;
 }
 #controls > ul {

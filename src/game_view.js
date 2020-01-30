@@ -4,28 +4,44 @@ class GameView {
     constructor(game, ctx){
         this.ctx = ctx;
         this.game = game;
+        this.cells = this.game.cells
         this.cell = this.game.addCell();
-        
+        this.enemy= this.game.addCell();
     }
+  
 
     bindKeyHandlers(){
-        const cell = this.cell;
+        this.game.cells.forEach(thing => {
+            if (thing.id ===  this.cell.id){
+                this.cells.push(thing);
+            }
+        })
 
         Object.keys(GameView.MOVES).forEach((k) => {
             const move = GameView.MOVES[k];
-            key(k, () => {cell.power(move); });
+            key(k, () => {
+                this.game.cells.forEach(unit => {
+                    unit.power(move);
+                })
+            });
         });
-        // debugger
-        key("e", () => { cell.fireMass();});
-        key("g", () => {cell.grow(10);}); //testing purposes only
-        key("space", () => {cell.divide();});
+       this.game.cells.forEach(cell => {
+            key("e", () => { cell.fireMass();});
+            key("g", () => {cell.grow(10);}); //testing purposes only
+            key("space", () => {
+                console.log('hi')
+                cell.divide();
+            });
+       })
+       
     }
 
-    start() {
+    start(){
         this.bindKeyHandlers();
         this.lastTime = 0;
         // start the animation
         requestAnimationFrame(this.animate.bind(this));
+        
     }
 
     animate(time) {
