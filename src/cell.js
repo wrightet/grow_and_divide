@@ -3,6 +3,8 @@ const Mass = require("./mass");
 const Util = require("./util");
 const Food = require("./food");
 const GameView = require('./game_view');
+const Origin = require('./origin');
+
 const randomColor = function () {
     const hexDigits = "0123456789ABCDEF";
     let color = "#";
@@ -103,10 +105,16 @@ class Cell extends MovingObject {
     }
 
 
-    relocate(){
-        this.pos = this.game.randomPosition();
+    relocate(pos){
+        this.pos = pos || this.game.randomPosition();
         this.vel = [0, 0];
     }
+
+    follow(pos){
+        setInterval(relocate(pos), 1)
+    }
+
+    
 }
 
 
