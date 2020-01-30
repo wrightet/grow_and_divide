@@ -9,17 +9,6 @@ class Mass extends MovingObject {
         options.color = Cell.color;
         super(options);
     }
-
-    // collideWith(otherObject) {
-    //     if (otherObject instanceof Cell) {
-    //         return true;
-    //     }
-    //     if (otherObject instanceof Food){
-    //         return true;
-    //     }
-
-    // }
-   
 }
- Mass.SPEED = 8;
+ Mass.SPEED = 6;
 module.exports = Mass;

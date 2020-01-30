@@ -8,6 +8,7 @@ class MovingObject {
         this.color = options.color;
         this.game = options.game;
         this.isWrappable = true;
+        this.id = options.id;
     }
 
     collideWith(otherObject) {
@@ -43,6 +44,7 @@ class MovingObject {
         if (this.game.isOutOfBounds(this.pos)) {
             if (this.isWrappable) {
                 this.pos = this.game.wrap(this.pos);
+                // this.pos = [this.pos[0] - 1, this.pos[1] -1]
             } else {
                 this.remove();
             }
