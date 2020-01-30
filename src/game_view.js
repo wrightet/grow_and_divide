@@ -6,6 +6,7 @@ class GameView {
         this.game = game;
         this.cells = this.game.cells
         this.cell = this.game.addCell();
+        this.origin = this.game.addOrigin();
         // this.enemy= this.game.addCell();
     }
   
@@ -20,7 +21,7 @@ class GameView {
         Object.keys(GameView.MOVES).forEach((k) => {
             const move = GameView.MOVES[k];
             key(k, () => {
-                this.game.cells.forEach(unit => {
+                this.game.origins.forEach(unit => {
                     unit.power(move);
                 })
             });

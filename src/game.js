@@ -2,12 +2,13 @@ const Cell = require("./cell");
 const Food = require("./food");
 const Mass = require("./mass");
 const Util = require("./util");
-
+const Origin = require('./origin');
 class Game {
     constructor(){
         this.food = [];
         this.cells = [];
         this.masses = [];
+        this.origins = [];
         this.addFood();
     }
 
@@ -18,7 +19,9 @@ class Game {
         } else if (object instanceof Cell){
             this.cells.push(object)
             console.log(this.cells)
-        } else if (object instanceof Mass){this.masses.push(object); console.log(this.masses)}
+        } else if (object instanceof Mass){this.masses.push(object); 
+            console.log(this.masses)}
+        else if (object instanceof Origin){this.origins.push(object)}
         else {
             throw new Error("unknown type of object");
         }
@@ -29,6 +32,11 @@ class Game {
         for (let i = 0; i < Game.NUM_FOOD; i++){
             this.add(new Food({game: this, pos: this.randomPosition()}));
         }
+    }
+
+    addOrigin(){
+        const origin = new Origin({pos: this.cells[0].pos, id: this.cells[0].id, game: this})
+        this.add(origin)
     }
 
     addCell(options){
@@ -48,7 +56,7 @@ class Game {
     }
 
     allObjects(){
-        return [].concat(this.cells, this.food, this.masses);
+        return [].concat(this.cells, this.food, this.masses, this.origins);
     }
 
     checkCollisions(){
@@ -102,6 +110,8 @@ class Game {
             this.food.splice(this.food.indexOf(object), 1);
         } else if (object instanceof Cell) {
             this.cells.splice(this.cells.indexOf(object), 1);
+        } else if (object instanceof Origin){
+            this.origins.splice(this.origins.indexOf(object), 1);
         } else {
             throw new Error("unknown type of object");
         }
