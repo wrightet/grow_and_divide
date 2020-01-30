@@ -79,7 +79,7 @@ class Cell extends MovingObject {
 
     divide(){
         // console.log(this)
-        if(this.radius > 30){
+        // if(this.radius > 30){
             this.shrink(this.radius/2)
             
             const cell = new Cell({
@@ -90,7 +90,8 @@ class Cell extends MovingObject {
                 id: this.id
             })
             this.game.addCell(cell)
-        }
+            console.log('division')
+        // }
         
         
     
