@@ -28,6 +28,7 @@ class Cell extends MovingObject {
         options.color = options.color || randomColor();
         options.id = options.id || randomId();
         super(options);  
+        console.log(options.pos)
         
     }
 
@@ -43,6 +44,9 @@ class Cell extends MovingObject {
         } else if (otherObject instanceof Cell && this.radius > (otherObject.radius + this.radius / 10) && this.id !== otherObject.id) {
             this.grow(otherObject.radius);
             otherObject.remove();
+        } else if (otherObject instanceof Cell && this.id === otherObject.id){
+            let dist = this.radius + otherObject.radius;
+            // otherObject.pos = [otherObject.pos[0] + dist, otherObject.pos[1] + dist]
         }
         return false
     }
@@ -99,27 +103,11 @@ class Cell extends MovingObject {
     
     }
 
-    power(impulse){
-        this.vel[0] += impulse[0];
-        this.vel[1] += impulse[1]
-    }
-
-
     relocate(pos){
         this.pos = pos || this.game.randomPosition();
         this.vel = [0, 0];
-    }
-
-    follow(pos){
-        setInterval(relocate(pos), 1)
-    }
-
-    
+    } 
 }
-
-
-
-Cell.RADIUS = 10;
 
 module.exports = Cell;
 

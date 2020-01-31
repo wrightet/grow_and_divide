@@ -7,16 +7,11 @@ class GameView {
         this.cells = this.game.cells
         this.cell = this.game.addCell();
         this.origin = this.game.addOrigin();
-        // this.enemy= this.game.addCell();
+        this.enemy= this.game.addCell();
     }
   
 
     bindKeyHandlers(){
-        // this.game.cells.forEach(thing => {
-        //     if (thing.id ===  this.cell.id){
-        //         this.cells.push(thing);
-        //     }
-        // })
 
         Object.keys(GameView.MOVES).forEach((k) => {
             const move = GameView.MOVES[k];
@@ -28,16 +23,20 @@ class GameView {
         });
         // console.log(this.game.cells)
        this.game.cells.forEach(cell => {
-            key("e", () => { cell.fireMass();});
-            key("g", () => {cell.grow(10);}); //testing purposes only
-            key("space", () => {
-                
-                if(cell.radius > 30){
-                    cell.divide(); 
-                }
+           if(cell.id === this.game.origins[0].id){
+                key("e", () => { cell.fireMass();});
+                key("g", () => {cell.grow(10);}); //testing purposes only
+                key("space", () => {
+                    
+                    if(cell.radius > 30){
+                        cell.divide(); 
+                    }
+                })
+            }
+            
                 
             });
-       })
+       
        
     }
 
