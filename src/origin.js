@@ -25,19 +25,13 @@ class Origin extends MovingObject{
 
     updateFollow(pos, vel){
         let int = 100;
-        // setInterval(() => {
             this.game.cells.forEach(cell => {
                 if(cell.pos !== pos && cell.id === this.id){
-                    // debugger
                     cell.pos = pos;
                     cell.vel = vel;
-                    
-                    // console.log("cell:",cell.pos)
-                    // console.log("origin:",pos)
                 }
                 
         })
-    // }, 1000);a
     }
   
     

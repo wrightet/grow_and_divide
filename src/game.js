@@ -18,9 +18,7 @@ class Game {
             this.food.push(object);
         } else if (object instanceof Cell){
             this.cells.push(object)
-            console.log(this.cells)
-        } else if (object instanceof Mass){this.masses.push(object); 
-            console.log(this.masses)}
+        } else if (object instanceof Mass){this.masses.push(object);}
         else if (object instanceof Origin){this.origins.push(object)}
         else {
             throw new Error("unknown type of object");
@@ -91,7 +89,6 @@ class Game {
     }
 
     moveObjects(delta) {
-        console.log(this.allObjects())
         this.allObjects().forEach((object) => {
             object.move(delta);
         });

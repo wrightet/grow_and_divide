@@ -38,13 +38,10 @@ class MovingObject {
         const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
             offsetX = this.vel[0] * velocityScale,
             offsetY = this.vel[1] * velocityScale;
-        // debugger
         this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
-        // console.log(this)
         if (this.game.isOutOfBounds(this.pos)) {
             if (this.isWrappable) {
                 this.pos = this.game.wrap(this.pos);
-                // this.pos = [this.pos[0] - 1, this.pos[1] -1]
             } else {
                 this.remove();
             }
