@@ -91,6 +91,7 @@ class Game {
     }
 
     moveObjects(delta) {
+        console.log(this.allObjects())
         this.allObjects().forEach((object) => {
             object.move(delta);
         });
