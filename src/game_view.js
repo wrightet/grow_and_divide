@@ -21,7 +21,6 @@ class GameView {
                 })
             });
         });
-        // console.log(this.game.cells)
        this.game.cells.forEach(cell => {
            if(cell.id === this.game.origins[0].id){
                 key("e", () => { cell.fireMass();});

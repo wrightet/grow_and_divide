@@ -28,10 +28,19 @@ class Cell extends MovingObject {
         options.color = options.color || randomColor();
         options.id = options.id || randomId();
         super(options);  
-        console.log(options.pos)
+      
         
     }
 
+    isCollidedWith(otherObject) {
+        const centerDist = Util.dist(this.pos, otherObject.pos);
+
+        // if (otherObject instanceof Cell && this.id === otherObject.id) {
+        //     let dist = this.radius + otherObject.radius;
+        //     otherObject.pos = [otherObject.pos[0] + dist, otherObject.pos[1] + dist]
+        // }
+        return centerDist < (this.radius + otherObject.radius);
+    }
 
     collideWith(otherObject) {
         if (otherObject instanceof Food) {
@@ -84,10 +93,7 @@ class Cell extends MovingObject {
     }
 
     divide(){
-        // console.log(this)
-        // if(this.radius > 30){
             this.shrink(this.radius/2)
-            
             const cell = new Cell({
                 radius: this.radius,
                 color: this.color,
@@ -96,11 +102,6 @@ class Cell extends MovingObject {
                 id: this.id
             })
             this.game.addCell(cell)
-            console.log('division')
-        // }
-        
-        
-    
     }
 
     relocate(pos){
