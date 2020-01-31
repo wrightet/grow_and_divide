@@ -55,6 +55,7 @@ class Cell extends MovingObject {
             otherObject.remove();
         } else if (otherObject instanceof Cell && this.id === otherObject.id){
             let dist = this.radius + otherObject.radius;
+            // this.pos = [this.pos[0] + dist, this.pos[1] + dist]
             // otherObject.pos = [otherObject.pos[0] + dist, otherObject.pos[1] + dist]
         }
         return false
