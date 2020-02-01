@@ -10,6 +10,7 @@ class Game {
         this.masses = [];
         this.origins = [];
         this.addFood();
+        
     }
 
     add(object){
@@ -17,7 +18,7 @@ class Game {
         if (object instanceof Food){
             this.food.push(object);
         } else if (object instanceof Cell){
-            this.cells.push(object)
+            this.cells.push(object); console.log(this.cells)
         } else if (object instanceof Mass){this.masses.push(object);}
         else if (object instanceof Origin){this.origins.push(object)}
         else {
