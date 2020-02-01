@@ -19,6 +19,11 @@ const randomId = function (){
     return Math.floor((Math.random() * 1000));
 }
 
+const cloneId = function (cloneId){
+    let id = cloneId || 0;
+    return id += 1;
+}
+
 
 class Cell extends MovingObject {
     constructor(options){
@@ -27,8 +32,9 @@ class Cell extends MovingObject {
         options.vel = options.vel || [0,0];
         options.color = options.color || randomColor();
         options.id = options.id || randomId();
+        options.cloneId = cloneId(options.cloneId);
         super(options);  
-      
+      console.log(this)
         
     }
 
@@ -55,7 +61,8 @@ class Cell extends MovingObject {
             otherObject.remove();
         } else if (otherObject instanceof Cell && this.id === otherObject.id){
             let dist = this.radius + otherObject.radius;
-            // this.pos = [this.pos[0] + dist, this.pos[1] + dist
+           
+            // this.pos = [this.pos[0], this.pos[1] - dist]
             // otherObject.pos = [otherObject.pos[0] + dist, otherObject.pos[1] + dist]
         }
         return false
@@ -94,6 +101,7 @@ class Cell extends MovingObject {
     }
 
     divide(){
+        
             this.shrink(this.radius/2)
             const cell = new Cell({
                 radius: this.radius,
@@ -103,6 +111,56 @@ class Cell extends MovingObject {
                 id: this.id
             })
             this.game.addCell(cell)
+            this.join();
+
+        // if (this.radius >= 14) {
+        //     const norm = Util.norm(this.vel);
+        //     const relVel = Util.scale(
+        //         Util.dir(this.vel),
+        //         Cell.SPEED
+        //     );
+
+        //     const cellVel = [
+        //         relVel[0] + this.vel[0], relVel[1] + this.vel[1]
+        //     ];
+
+        //     const cell = new Cell({
+        //         radius: this.radius,
+        //         color: this.color,
+        //         pos: [(this.pos[0] + this.radius + 5), (this.pos[1] + this.radius + 5)],
+        //         game: this.game,
+        //         id: this.id
+        //     })
+
+
+        // }
+        // this.shrink(this.radius / 2)
+
+        // this.game.addCell(cell)
+    }
+
+    join(){
+        setTimeout(() => {
+            let size = 0;
+         
+                let options = {radius: 0,
+            color: this.color,
+            id: this.id,
+            cloneId: this.cloneId,
+            pos: this.pos,
+            vel: this.vel,
+            game: this.game}
+
+            
+            this.game.cells.forEach(cell => {
+               
+                    options.radius += cell.radius
+                    cell.remove()
+                
+            })  
+        
+            this.game.addCell(options)
+        }, 5000);
     }
 
     relocate(pos){

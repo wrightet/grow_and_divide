@@ -9,6 +9,7 @@ class MovingObject {
         this.game = options.game;
         this.isWrappable = true;
         this.id = options.id;
+        this.cloneId = options.cloneId;
     }
 
     collideWith(otherObject) {

@@ -27,6 +27,9 @@ class Origin extends MovingObject{
         let int = 100;
             this.game.cells.forEach(cell => {
                 if(cell.pos !== pos && cell.id === this.id){
+                    if(pos < 0){
+                        cell.pos = [pos[0] + this.radius, pos[1]]
+                    }
                     cell.pos = pos;
                     cell.vel = vel;
                 }
