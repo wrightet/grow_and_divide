@@ -18,7 +18,7 @@ class Game {
         if (object instanceof Food){
             this.food.push(object);
         } else if (object instanceof Cell){
-            this.cells.push(object); console.log(this.cells)
+            this.cells.push(object);
         } else if (object instanceof Mass){this.masses.push(object);}
         else if (object instanceof Origin){this.origins.push(object)}
         else {

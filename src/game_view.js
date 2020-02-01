@@ -28,6 +28,9 @@ class GameView {
                 key("space", () => {
                     
                     if(cell.radius > 30){
+                        console.log(cell)
+                        console.log(cell.radius)
+                        console.log('divide')
                         cell.divide(); 
                     }
                 })
