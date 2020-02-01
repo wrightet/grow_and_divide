@@ -34,8 +34,6 @@ class Cell extends MovingObject {
         options.id = options.id || randomId();
         options.cloneId = cloneId(options.cloneId);
         super(options);  
-      console.log(this)
-        
     }
 
     isCollidedWith(otherObject) {
@@ -143,13 +141,13 @@ class Cell extends MovingObject {
         setTimeout(() => {
             let size = 0;
          
-                let options = {radius: 0,
-            color: this.color,
-            id: this.id,
-            cloneId: this.cloneId,
-            pos: this.pos,
-            vel: this.vel,
-            game: this.game}
+            let options = {radius: 0,
+                color: this.color,
+                id: this.id,
+                cloneId: this.cloneId,
+                pos: this.pos,
+                vel: this.vel,
+                game: this.game}
 
             
             this.game.cells.forEach(cell => {
