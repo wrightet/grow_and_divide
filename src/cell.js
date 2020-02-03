@@ -109,7 +109,7 @@ class Cell extends MovingObject {
                 id: this.id
             })
             this.game.addCell(cell)
-            this.join();
+            // this.join();
 
         // if (this.radius >= 14) {
         //     const norm = Util.norm(this.vel);
