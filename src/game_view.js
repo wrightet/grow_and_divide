@@ -6,12 +6,8 @@ class GameView {
         this.game = game;
         this.cells = this.game.cells;
         this.cell = this.game.addCell();
-        console.log(this.cell);
         this.origin = this.game.addOrigin();
-        console.log(this.origin);
         this.enemy= this.game.addCell();
-        console.log(this.enemy);
-        console.log(this)
     }
   
 

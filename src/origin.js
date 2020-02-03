@@ -7,7 +7,8 @@ class Origin extends MovingObject{
         this.vel = [0,0]
         this.radius = 5; //testing purposes
         this.id = props.id
-        this.color = '#ffffff' //testing purposes
+        this.color = props.color;
+        // this.color = '#AAffffff' //testing purposes
         this.game = props.game;
         
     }
