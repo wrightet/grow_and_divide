@@ -151,9 +151,11 @@ class Cell extends MovingObject {
 
             
             this.game.cells.forEach(cell => {
-               
-                    options.radius += cell.radius
+               if(cell.id === this.game.origins[0].id){
+                   options.radius += cell.radius
                     cell.remove()
+               }
+                    
                 
             })  
         

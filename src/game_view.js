@@ -4,10 +4,14 @@ class GameView {
     constructor(game, ctx){
         this.ctx = ctx;
         this.game = game;
-        this.cells = this.game.cells
+        this.cells = this.game.cells;
         this.cell = this.game.addCell();
+        console.log(this.cell);
         this.origin = this.game.addOrigin();
+        console.log(this.origin);
         this.enemy= this.game.addCell();
+        console.log(this.enemy);
+        console.log(this)
     }
   
 
@@ -28,8 +32,9 @@ class GameView {
                 key("space", () => {
                     
                     if(cell.radius > 30){
-                        console.log(cell)
-                        console.log(cell.radius)
+                        // console.log(cell)
+                        // console.log(cell.radius)
+                        console.log(this.game)
                         console.log('divide')
                         cell.divide(); 
                     }

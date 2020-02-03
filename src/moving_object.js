@@ -45,7 +45,7 @@ class MovingObject {
                 this.vel = [0, 0] //stops wrapping
                 if (this.pos[0] <= 0){
                     this.pos = [this.pos[0]+ this.radius, this.pos[1]]
-                } else if (this.pos[0] > 1000){
+                } else if (this.pos[0] > 800){
                     this.pos = [this.pos[0] - this.radius, this.pos[1]]
                 } else if (this.pos[1] <= 0){
                     this.pos = [this.pos[0], this.pos[1] + this.radius]
