@@ -34,7 +34,7 @@ class Game {
     }
 
     addOrigin(){
-        const origin = new Origin({pos: this.cells[0].pos, id: this.cells[0].id, game: this})
+        const origin = new Origin({pos: this.cells[0].pos, id: this.cells[0].id, color: this.cells[0].color, game: this})
         this.add(origin)
     }
 
@@ -84,9 +84,10 @@ class Game {
         });
     }
 
-    isOutOfBounds(pos) {
-        return (pos[0] < 0) || (pos[1] < 0) ||
-            (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+    isOutOfBounds(pos, radius) {
+        
+        return (pos[0] < 0 + radius) || (pos[1] - radius < 0) ||
+            (pos[0] + radius > Game.DIM_X) || (pos[1] + radius > Game.DIM_Y);
     }
 
     moveObjects(delta) {

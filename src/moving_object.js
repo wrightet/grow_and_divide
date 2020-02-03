@@ -7,7 +7,7 @@ class MovingObject {
         this.radius = options.radius;
         this.color = options.color;
         this.game = options.game;
-        this.isWrappable = true;
+        this.isStoppable = true;
         this.id = options.id;
         this.cloneId = options.cloneId;
     }
@@ -40,18 +40,19 @@ class MovingObject {
             offsetX = this.vel[0] * velocityScale,
             offsetY = this.vel[1] * velocityScale;
         this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
-        if (this.game.isOutOfBounds(this.pos)) {
-            if (this.isWrappable) {
+        if (this.game.isOutOfBounds(this.pos, this.radius)) {
+            if (this.isStoppable) {
                 this.vel = [0, 0] //stops wrapping
-                if (this.pos[0] <= 0){
-                    this.pos = [this.pos[0]+ this.radius, this.pos[1]]
-                } else if (this.pos[0] > 800){
-                    this.pos = [this.pos[0] - this.radius, this.pos[1]]
-                } else if (this.pos[1] <= 0){
-                    this.pos = [this.pos[0], this.pos[1] + this.radius]
-                } else if (this.pos[1] > 600) {
-                    this.pos = [this.pos[0], this.pos[1] - this.radius]
-                }
+                // if (this.pos[0] <= 0 + this.radius){
+                //     this.pos = [this.pos[0]+ this.radius, this.pos[1]]
+                // } else if (this.pos[0] >= (800 - this.radius)){
+                //     this.pos = [this.pos[0] - this.radius, this.pos[1]]
+                //     // this.vel = [0,0]
+                // } else if (this.pos[1] <= 0 + this.radius){
+                //     this.pos = [this.pos[0], this.pos[1] + this.radius]
+                // } else if (this.pos[1] > 600 - this.radius) {
+                //     this.pos = [this.pos[0], this.pos[1] - this.radius]
+                // }
                 
                 
             } else {
