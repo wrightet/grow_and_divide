@@ -1,29 +1,47 @@
 #canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline;
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: absolute;
+    border: 2px solid #3AFF00;
+    width: 800px;
+    height: 600px;
+    left: 20%;
+    
     
 }
 h1 {
     display: flex;
     justify-content: center;
+    color: #3AFF00;
 }
 
 #links > ul {
     list-style: none;
+    color: #3AFF00;
+}
+#links > ul > li > a {
+    color: #3AFF00;
 }
 #links{
-    display: flex;
-    display: none;
+    display: inline;
+    /* display: none; */
     justify-content: flex-end;
+    position: relative;
+    top: 0%;
+    width: 100px;
+    color: #3AFF00;
+    left: 85%;
+    top: 20%
 }
 
 #controls {
     border: 1px solid black;
     width: 15%;
-    display: flex;
-    display: none; 
+    display: inline;
+    /* display: none;  */
     justify-content: flex-start;
+    position: absolute;
 }
 #controls > ul {
     list-style: none;
@@ -31,4 +49,8 @@ h1 {
 
 #controls > ul > li {
     padding: 5px;
+    color: #3AFF00;
+}
+body{
+    background: black;
 }
